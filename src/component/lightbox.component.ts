@@ -8,8 +8,8 @@ import {PhotoswipeImage} from "../model/photoswipe-image.model";
   template: `
             <div class="angular2_photoswipe" itemscope itemtype="http://schema.org/ImageGallery">
               <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" *ngFor="let image of getImages()">
-                <a href="{{image.largeUrl}}" itemprop="contentUrl" [attr.data-size]="image.size" (click)="openImage(image)">
-                  <img src="{{image.thumbUrl}}" itemprop="thumbnail" alt="{{image.description}}" />
+                <a href="{{image.src}}" itemprop="contentUrl" [attr.data-size]="image.size" (click)="openImage(image)">
+                  <img src="{{image.msrc}}" itemprop="thumbnail" alt="{{image.description}}" />
                 </a>
                 <figcaption itemprop="caption description">{{image.description}}</figcaption>
               </figure>
@@ -760,7 +760,7 @@ export class Lightbox {
     items.length = 0;
 
     this.lbService.getImages(this.key).forEach(function(img){
-      items.push(new PhotoswipeImage(img.largeUrl, 800, 800));
+      items.push(new PhotoswipeImage(img.src, img.w, img.h));
     });
     return items;
   }

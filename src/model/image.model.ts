@@ -1,9 +1,10 @@
 export class Image {
 
   id: number;
-  largeUrl : string;
-  thumbUrl : string;
-  size: string;
+  src : string;
+  msrc : string;
+  w: number;
+  h: number;
 
   description: string;
   author: string;
