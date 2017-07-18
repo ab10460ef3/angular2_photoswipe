@@ -23,26 +23,25 @@ exports.default = {
     providers: [lightbox_service_1.LightboxService],
     directives: [lightbox_component_1.Lightbox]
 };
-var Angular2Photoswipe = (function () {
+var Angular2Photoswipe = Angular2Photoswipe_1 = (function () {
     function Angular2Photoswipe() {
     }
-    Angular2Photoswipe_1 = Angular2Photoswipe;
     Angular2Photoswipe.forRoot = function () {
         return {
             ngModule: Angular2Photoswipe_1,
             providers: [lightbox_service_1.LightboxService]
         };
     };
-    Angular2Photoswipe = Angular2Photoswipe_1 = __decorate([
-        core_1.NgModule({
-            imports: [common_1.CommonModule],
-            declarations: [lightbox_component_1.Lightbox],
-            providers: [lightbox_service_1.LightboxService],
-            exports: [lightbox_component_1.Lightbox]
-        })
-    ], Angular2Photoswipe);
     return Angular2Photoswipe;
-    var Angular2Photoswipe_1;
 }());
+Angular2Photoswipe = Angular2Photoswipe_1 = __decorate([
+    core_1.NgModule({
+        imports: [common_1.CommonModule],
+        declarations: [lightbox_component_1.Lightbox],
+        providers: [lightbox_service_1.LightboxService],
+        exports: [lightbox_component_1.Lightbox]
+    })
+], Angular2Photoswipe);
 exports.Angular2Photoswipe = Angular2Photoswipe;
+var Angular2Photoswipe_1;
 //# sourceMappingURL=index.js.map

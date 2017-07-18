@@ -39,11 +39,11 @@ var LightboxService = (function () {
             }
         });
     };
-    LightboxService = __decorate([
-        core_1.Injectable(),
-        __metadata("design:paramtypes", [])
-    ], LightboxService);
     return LightboxService;
 }());
+LightboxService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [])
+], LightboxService);
 exports.LightboxService = LightboxService;
 //# sourceMappingURL=lightbox.service.js.map
