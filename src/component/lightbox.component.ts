@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewChild} from '@angular/core';
 import {Image} from '../model/image.model';
 import {LightboxService} from '../service/lightbox.service';
 import {PhotoswipeImage} from "../model/photoswipe-image.model";
@@ -16,7 +16,7 @@ import {PhotoswipeImage} from "../model/photoswipe-image.model";
             </div>
 
             <!-- Root element of PhotoSwipe. Must have class pswp. -->
-            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+            <div #pswp class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
               <!-- Background of PhotoSwipe.
                      It's a separate element, as animating opacity is faster than rgba(). -->
               <div class="pswp__bg"></div>
@@ -256,7 +256,7 @@ import {PhotoswipeImage} from "../model/photoswipe-image.model";
 
 */
 /*
-	
+
 	1. Buttons
 
  */
@@ -501,7 +501,7 @@ a.pswp__share--download:hover {
   padding: 0 10px; }
 
 /*
-	
+
 	4. Caption
 
  */
@@ -582,8 +582,8 @@ a.pswp__share--download:hover {
   margin: 0; }
 
 .pswp--css_animation .pswp__preloader__cut {
-  /* 
-			The idea of animating inner circle is based on Polymer ("material") loading indicator 
+  /*
+			The idea of animating inner circle is based on Polymer ("material") loading indicator
 			 by Keanu Lee https://blog.keanulee.com/2014/10/20/the-tale-of-three-spinners.html
 		*/
   position: relative;
@@ -653,7 +653,7 @@ a.pswp__share--download:hover {
             transform: rotate(0deg); } }
 
 /*
-	
+
 	6. Additional styles
 
  */
@@ -725,13 +725,14 @@ a.pswp__share--download:hover {
 
 .pswp--minimal--dark .pswp__top-bar {
   background: none; }
- 
+
 
 `]
 })
 export class Lightbox {
 
   @Input('galleryKey') key:string;
+  @ViewChild('pswp') pswpEl;
 
   constructor(private lbService:LightboxService) {
   }
@@ -743,6 +744,12 @@ export class Lightbox {
 
   public getImages():Image[] {
     return this.lbService.getImages(this.key);
+  }
+
+  public isOpen(): boolean {
+      /// pswp--open class is added to the root node in PhotoSwipe's init
+      /// method.
+      return this.pswpEl.nativeElement.classList.contains('pswp--open');
   }
 
   private openPhotoSwipe(img:Image, galleryDOM:any):boolean {
