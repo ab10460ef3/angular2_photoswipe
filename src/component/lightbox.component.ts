@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewChild} from '@angular/core';
 import {Image} from '../model/image.model';
 import {LightboxService} from '../service/lightbox.service';
 import {PhotoswipeImage} from "../model/photoswipe-image.model";
@@ -18,7 +18,7 @@ import {PhotoswipeImage} from "../model/photoswipe-image.model";
            </div>
 
             <!-- Root element of PhotoSwipe. Must have class pswp. -->
-            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+            <div #pswp class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
               <!-- Background of PhotoSwipe.
                      It's a separate element, as animating opacity is faster than rgba(). -->
               <div class="pswp__bg"></div>
@@ -734,6 +734,7 @@ a.pswp__share--download:hover {
 export class Lightbox {
 
   @Input('galleryKey') key:string;
+  @ViewChild('pswp') pswpEl;
 
   constructor(private lbService:LightboxService) {
   }
@@ -743,6 +744,12 @@ export class Lightbox {
     return false;
   }
 
+  public isOpen(): boolean {
+     /// pswp--open class is added to the root node in PhotoSwipe's init
+     /// method.
+     return this.pswpEl.nativeElement.classList.contains('pswp--open');
+  }
+ 
   public getImages():Image[] {
     return this.lbService.getImages(this.key);
   }
