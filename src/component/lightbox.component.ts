@@ -6,14 +6,16 @@ import {PhotoswipeImage} from "../model/photoswipe-image.model";
 @Component({
   selector: 'lightbox',
   template: `
-            <div class="angular2_photoswipe" itemscope itemtype="http://schema.org/ImageGallery">
-              <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" *ngFor="let image of getImages()">
+          <div class="ui-g">
+            <div class="ui-grid-row angular2_photoswipe" itemscope itemtype="http://schema.org/ImageGallery">
+              <figure class="ui-g-12 ui-md-4 ui-lg-2" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" *ngFor="let image of getImages()">
                 <a href="{{image.src}}" itemprop="contentUrl" [attr.data-size]="image.size" (click)="openImage(image)">
                   <img src="{{image.msrc}}" itemprop="thumbnail" alt="{{image.description}}" />
                 </a>
                 <figcaption itemprop="caption description">{{image.description}}</figcaption>
               </figure>
             </div>
+           </div>
 
             <!-- Root element of PhotoSwipe. Must have class pswp. -->
             <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -43,7 +45,7 @@ import {PhotoswipeImage} from "../model/photoswipe-image.model";
                     <div class="pswp__preloader">
                       <div class="pswp__preloader__icn">
                         <div class="pswp__preloader__cut">
-                          <div class="pswp__preloader__donut"></div>
+                          <div class="pswp__preloader__donut"></div>    
                         </div>
                       </div>
                     </div>
