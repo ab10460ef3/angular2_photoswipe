@@ -6,8 +6,8 @@ export declare class Lightbox {
     pswpEl: any;
     constructor(lbService: LightboxService);
     openImage(img: Image): boolean;
-    getImages(): Image[];
     isOpen(): boolean;
+    getImages(): Image[];
     private openPhotoSwipe(img, galleryDOM);
     private getImagesAsPhotoswipe();
     private logImage(img);
