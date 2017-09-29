@@ -8,9 +8,9 @@ import {PhotoswipeImage} from "../model/photoswipe-image.model";
   template: `
           <div class="ui-g">
             <div class="ui-grid-row angular2_photoswipe" itemscope itemtype="http://schema.org/ImageGallery">
-              <figure class="ui-g-12 ui-md-4 ui-lg-2" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" *ngFor="let image of getImages()">
+              <figure class="ui-g-6 ui-md-4 ui-lg-4" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" *ngFor="let image of getImages()">
                 <a href="{{image.src}}" itemprop="contentUrl" [attr.data-size]="image.size" (click)="openImage(image)">
-                  <img src="{{image.msrc}}" itemprop="thumbnail" alt="{{image.description}}" />
+                  <img src="{{image.msrc}}" width="100%" itemprop="thumbnail" alt="{{image.description}}" />
                 </a>
                 <figcaption itemprop="caption description">{{image.description}}</figcaption>
               </figure>
